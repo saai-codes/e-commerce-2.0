@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXUS — Premium Shopping</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===================== LOADER ===================== -->
+<div id="loader" class="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">NEX<span>US</span></div>
+    <div class="loader-tagline">Premium Shopping</div>
+    <div class="loader-bar-track"><div class="loader-bar-fill" id="loaderBar"></div></div>
+    <div class="loader-percent" id="loaderPercent">0%</div>
+  </div>
+  <div class="loader-grain"></div>
+</div>
+
+<!-- ===================== NAVBAR ===================== -->
+<header id="navbar" class="navbar">
+  <div class="nav-container">
+
+    <!-- Logo -->
+    <a href="#hero" class="nav-logo">NEX<span>US</span></a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="nav-links" id="navLinks">
+      <a href="#hero" class="nav-link active">Home</a>
+      <a href="#categories" class="nav-link">Categories</a>
+      <a href="#products" class="nav-link">Shop</a>
+      <a href="#why-us" class="nav-link">Why Us</a>
+      <a href="#testimonials" class="nav-link">Reviews</a>
+      <a href="#footer" class="nav-link">Contact</a>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="nav-search-wrap" id="navSearchWrap">
+      <div class="nav-search">
+        <i class="fas fa-search nav-search-icon"></i>
+        <input type="text" id="searchInput" class="nav-search-input" placeholder="Search products…">
+        <button class="nav-search-clear" id="searchClear" style="display:none"><i class="fas fa-times"></i></button>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="nav-actions">
+      <button class="nav-action-btn" id="searchToggleBtn" title="Search" aria-label="Toggle search">
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="nav-action-btn wishlist-btn-nav" id="wishlistNavBtn" title="Wishlist" aria-label="Wishlist">
+        <i class="fas fa-heart"></i>
+        <span class="action-badge" id="wishlistBadge">0</span>
+      </button>
+      <button class="nav-action-btn cart-btn-nav" id="cartNavBtn" title="Cart" aria-label="Cart">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="action-badge" id="cartBadge">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- Mobile Search (shown below nav on toggle) -->
+  <div class="mobile-search-bar" id="mobileSearchBar">
+    <div class="nav-search mobile">
+      <i class="fas fa-search nav-search-icon"></i>
+      <input type="text" id="mobileSearchInput" class="nav-search-input" placeholder="Search products…">
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-drawer-overlay" id="mobileDrawerOverlay"></div>
+<nav class="mobile-drawer" id="mobileDrawer">
+  <div class="mobile-drawer-header">
+    <span class="nav-logo">NEX<span>US</span></span>
+    <button class="mobile-drawer-close" id="mobileDrawerClose"><i class="fas fa-times"></i></button>
+  </div>
+  <ul class="mobile-nav-list">
+    <li><a href="#hero" class="mobile-nav-link"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="#categories" class="mobile-nav-link"><i class="fas fa-th-large"></i> Categories</a></li>
+    <li><a href="#products" class="mobile-nav-link"><i class="fas fa-store"></i> Shop</a></li>
+    <li><a href="#why-us" class="mobile-nav-link"><i class="fas fa-star"></i> Why Us</a></li>
+    <li><a href="#testimonials" class="mobile-nav-link"><i class="fas fa-comment-dots"></i> Reviews</a></li>
+    <li><a href="#footer" class="mobile-nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+  </ul>
+  <div class="mobile-drawer-footer">
+    <button class="drawer-action-btn" id="mobileCartOpenBtn"><i class="fas fa-shopping-bag"></i> View Cart (<span id="mobileCartCount">0</span>)</button>
+    <button class="drawer-action-btn secondary" id="mobileWishlistOpenBtn"><i class="fas fa-heart"></i> Wishlist (<span id="mobileWishlistCount">0</span>)</button>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section id="hero" class="hero">
+  <div class="hero-bg">
+    <div class="hero-gradient"></div>
+    <div class="hero-noise"></div>
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-orb orb-3"></div>
+    <!-- Floating grid lines -->
+    <div class="hero-grid-lines">
+      <div class="grid-line gl-1"></div>
+      <div class="grid-line gl-2"></div>
+      <div class="grid-line gl-3"></div>
+    </div>
+  </div>
+
+  <div class="hero-inner">
+    <!-- Hero Content Left -->
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <span class="eyebrow-dot"></span>
+        <span>New Season — 2025 Collection</span>
+      </div>
+      <h1 class="hero-title">
+        Shop the<br>
+        <em class="hero-title-italic">Future</em>
+        <span class="hero-title-block"> of Style</span>
+      </h1>
+      <p class="hero-desc">Discover thousands of premium products — from cutting-edge electronics to iconic fashion. Curated for the discerning few.</p>
+      <div class="hero-cta-row">
+        <button class="btn-hero-primary" onclick="scrollToProducts()">
+          <span>Explore Collection</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+        <button class="btn-hero-ghost" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">
+          <i class="fas fa-th-large"></i>
+          <span>Browse Categories</span>
+        </button>
+      </div>
+      <div class="hero-stats-row">
+        <div class="hero-stat">
+          <div class="stat-value" data-target="50000">0</div>
+          <div class="stat-label">Products</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="stat-value" data-target="2000000">0</div>
+          <div class="stat-label">Customers</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="stat-value stat-rating">4.9★</div>
+          <div class="stat-label">Rating</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Showcase Right -->
+    <div class="hero-showcase">
+      <div class="showcase-track" id="heroTrack">
+        <!-- Slides injected by JS -->
+      </div>
+      <div class="showcase-dots" id="showcaseDots"></div>
+
+      <!-- Floating Info Cards -->
+      <div class="hero-float-card float-tl" id="floatCard1">
+        <div class="float-icon"><i class="fas fa-truck"></i></div>
+        <div class="float-text">
+          <strong>Free Delivery</strong>
+          <span>On all orders ₹499+</span>
+        </div>
+      </div>
+      <div class="hero-float-card float-br" id="floatCard2">
+        <div class="float-icon pulse-icon"><i class="fas fa-shield-alt"></i></div>
+        <div class="float-text">
+          <strong>Secure Pay</strong>
+          <span>100% Protected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-dot"></div></div>
+    <span>Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ===================== MARQUEE ===================== -->
+<div class="marquee-strip">
+  <div class="marquee-inner" id="marqueeInner">
+    <span>Free Shipping ₹499+</span><span class="mx">✦</span>
+    <span>Premium Quality</span><span class="mx">✦</span>
+    <span>Easy Returns</span><span class="mx">✦</span>
+    <span>24/7 Support</span><span class="mx">✦</span>
+    <span>Secure Payments</span><span class="mx">✦</span>
+    <span>Exclusive Daily Deals</span><span class="mx">✦</span>
+    <span>Flash Sales Weekly</span><span class="mx">✦</span>
+    <span>Free Shipping ₹499+</span><span class="mx">✦</span>
+    <span>Premium Quality</span><span class="mx">✦</span>
+    <span>Easy Returns</span><span class="mx">✦</span>
+    <span>24/7 Support</span><span class="mx">✦</span>
+    <span>Secure Payments</span><span class="mx">✦</span>
+    <span>Exclusive Daily Deals</span><span class="mx">✦</span>
+    <span>Flash Sales Weekly</span><span class="mx">✦</span>
+  </div>
+</div>
+
+<!-- ===================== CATEGORIES ===================== -->
+<section id="categories" class="section categories-section">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Browse By</div>
+      <h2 class="section-title">Shop by <em>Category</em></h2>
+      <p class="section-sub">Explore our curated range of categories for every taste and need.</p>
+    </div>
+    <div class="categories-grid" id="categoriesGrid">
+      <div class="cat-card reveal" data-cat="all">
+        <div class="cat-card-bg"></div>
+        <div class="cat-icon-wrap"><span class="cat-emoji">🛍️</span></div>
+        <div class="cat-info">
+          <h3>All Products</h3>
+          <span>100+ items</span>
+        </div>
+        <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="cat-card reveal" data-cat="electronics">
+        <div class="cat-card-bg"></div>
+        <div class="cat-icon-wrap"><span class="cat-emoji">📱</span></div>
+        <div class="cat-info">
+          <h3>Electronics</h3>
+          <span>340+ items</span>
+        </div>
+        <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="cat-card reveal" data-cat="fashion">
+        <div class="cat-card-bg"></div>
+        <div class="cat-icon-wrap"><span class="cat-emoji">👗</span></div>
+        <div class="cat-info">
+          <h3>Fashion</h3>
+          <span>1,200+ items</span>
+        </div>
+        <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="cat-card reveal" data-cat="shoes">
+        <div class="cat-card-bg"></div>
+        <div class="cat-icon-wrap"><span class="cat-emoji">👟</span></div>
+        <div class="cat-info">
+          <h3>Shoes</h3>
+          <span>480+ items</span>
+        </div>
+        <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="cat-card reveal" data-cat="accessories">
+        <div class="cat-card-bg"></div>
+        <div class="cat-icon-wrap"><span class="cat-emoji">⌚</span></div>
+        <div class="cat-info">
+          <h3>Accessories</h3>
+          <span>220+ items</span>
+        </div>
+        <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+      <div class="cat-card reveal" data-cat="gadgets">
+        <div class="cat-card-bg"></div>
+        <div class="cat-icon-wrap"><span class="cat-emoji">💻</span></div>
+        <div class="cat-info">
+          <h3>Gadgets</h3>
+          <span>195+ items</span>
+        </div>
+        <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRODUCTS ===================== -->
+<section id="products" class="section products-section">
+  <div class="section-inner">
+    <div class="section-header reveal" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px">
+      <div>
+        <div class="section-eyebrow">Featured</div>
+        <h2 class="section-title">Our <em>Products</em></h2>
+      </div>
+      <div class="products-count-badge" id="productsCountBadge">16 products</div>
+    </div>
+
+    <!-- Toolbar -->
+    <div class="products-toolbar reveal">
+      <div class="filter-pills" id="filterPills">
+        <button class="filter-pill active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="electronics">Electronics</button>
+        <button class="filter-pill" data-filter="fashion">Fashion</button>
+        <button class="filter-pill" data-filter="shoes">Shoes</button>
+        <button class="filter-pill" data-filter="accessories">Accessories</button>
+        <button class="filter-pill" data-filter="gadgets">Gadgets</button>
+      </div>
+      <div class="toolbar-right">
+        <select class="sort-select" id="sortSelect">
+          <option value="default">Featured</option>
+          <option value="price-low">Price ↑</option>
+          <option value="price-high">Price ↓</option>
+          <option value="rating">Top Rated</option>
+          <option value="discount">Most Saved</option>
+        </select>
+        <button class="grid-toggle active" id="gridToggle4" data-cols="4" title="4 columns"><i class="fas fa-th"></i></button>
+        <button class="grid-toggle" id="gridToggle2" data-cols="2" title="2 columns"><i class="fas fa-th-large"></i></button>
+      </div>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid cols-4" id="productsGrid"></div>
+
+    <!-- Load More -->
+    <div class="load-more-wrap">
+      <button class="btn-load-more" id="loadMoreBtn">
+        <span>Load More Products</span>
+        <i class="fas fa-plus"></i>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROMO BANNERS ===================== -->
+<section class="promo-section">
+  <div class="section-inner">
+    <div class="promo-grid">
+      <div class="promo-card promo-hot reveal">
+        <div class="promo-texture"></div>
+        <div class="promo-content">
+          <span class="promo-tag">⚡ Limited Time</span>
+          <h3 class="promo-title">Up to 60% OFF<br>Electronics</h3>
+          <p class="promo-desc">Smartphones, laptops, headphones — grab them before they're gone.</p>
+          <button class="promo-cta" onclick="filterByCategory('electronics')">
+            Shop Electronics <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="promo-visual">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&q=80" alt="Electronics">
+        </div>
+      </div>
+      <div class="promo-card promo-dark reveal">
+        <div class="promo-texture"></div>
+        <div class="promo-content">
+          <span class="promo-tag">✨ New Collection</span>
+          <h3 class="promo-title">Fashion Forward<br>2025</h3>
+          <p class="promo-desc">Explore the latest trends — from casual everyday wear to formal elegance.</p>
+          <button class="promo-cta" onclick="filterByCategory('fashion')">
+            Shop Fashion <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="promo-visual">
+          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&q=80" alt="Fashion">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY CHOOSE US ===================== -->
+<section id="why-us" class="section why-section">
+  <div class="section-inner">
+    <div class="section-header reveal" style="text-align:center">
+      <div class="section-eyebrow">Our Promise</div>
+      <h2 class="section-title">Why Choose <em>NEXUS</em></h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon-wrap"><i class="fas fa-shipping-fast"></i></div>
+        <h3>Lightning Delivery</h3>
+        <p>Next-day delivery available on thousands of products. Free shipping on all orders above ₹499.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-wrap"><i class="fas fa-undo-alt"></i></div>
+        <h3>30-Day Returns</h3>
+        <p>Not happy? Return within 30 days for a full refund. No questions asked, completely hassle-free.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-wrap"><i class="fas fa-lock"></i></div>
+        <h3>Secure Payments</h3>
+        <p>Your financial data is always safe. We use industry-standard 256-bit SSL encryption.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-wrap"><i class="fas fa-headset"></i></div>
+        <h3>24/7 Support</h3>
+        <p>Our dedicated support team is always here to help — via chat, email, or phone.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-wrap"><i class="fas fa-medal"></i></div>
+        <h3>Authentic Products</h3>
+        <p>Every product is verified and sourced directly from authorized brands and manufacturers.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon-wrap"><i class="fas fa-percentage"></i></div>
+        <h3>Best Price Guarantee</h3>
+        <p>Found it cheaper somewhere else? We'll match the price. Always get the best deal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section id="testimonials" class="section testimonials-section">
+  <div class="section-inner">
+    <div class="section-header reveal" style="text-align:center">
+      <div class="section-eyebrow">Social Proof</div>
+      <h2 class="section-title">What Our <em>Customers</em> Say</h2>
+      <p class="section-sub">Trusted by over 2 million happy shoppers across India.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Absolutely amazing shopping experience! Products arrived quickly and quality is top-notch. The packaging was premium too. I'll definitely be a returning customer.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#f97316,#fb923c)">AP</div>
+          <div>
+            <div class="testi-name">Arjun Patel</div>
+            <div class="testi-meta">Verified Buyer · Mumbai</div>
+          </div>
+          <div class="testi-verified"><i class="fas fa-check-circle"></i></div>
+        </div>
+      </div>
+      <div class="testi-card featured reveal">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">Best online store I've ever used. The website is beautiful, checkout was super smooth, and my smartwatch arrived in perfect condition. NEXUS is now my go-to for everything.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)">SM</div>
+          <div>
+            <div class="testi-name">Sneha Malhotra</div>
+            <div class="testi-meta">Verified Buyer · Bangalore</div>
+          </div>
+          <div class="testi-verified"><i class="fas fa-check-circle"></i></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★☆</div>
+        <p class="testi-text">Great selection and competitive prices. The customer support team was incredibly helpful when I had a query. 100% recommend NEXUS to all my friends and family.</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#16a34a,#0ea5e9)">RK</div>
+          <div>
+            <div class="testi-name">Rahul Kumar</div>
+            <div class="testi-meta">Verified Buyer · Delhi</div>
+          </div>
+          <div class="testi-verified"><i class="fas fa-check-circle"></i></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-quote-mark">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">The return process was incredibly smooth. I ordered the wrong size shoes and they handled the exchange within 48 hours. Exceptional service from start to finish!</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#ec4899,#f97316)">PD</div>
+          <div>
+            <div class="testi-name">Priya Desai</div>
+            <div class="testi-meta">Verified Buyer · Pune</div>
+          </div>
+          <div class="testi-verified"><i class="fas fa-check-circle"></i></div>
+        </div>
+      </div>
+    </div>
+    <!-- Trust Bar -->
+    <div class="trust-bar reveal">
+      <div class="trust-item"><i class="fas fa-star"></i><span><strong>4.9/5</strong> Average Rating</span></div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><i class="fas fa-users"></i><span><strong>2M+</strong> Happy Customers</span></div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><i class="fas fa-box"></i><span><strong>50K+</strong> Products</span></div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><i class="fas fa-award"></i><span><strong>#1</strong> Rated in India</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="footer" class="footer">
+  <div class="footer-inner">
+    <!-- Newsletter -->
+    <div class="footer-newsletter reveal">
+      <div class="newsletter-text">
+        <h3>Join 500K+ Happy Shoppers</h3>
+        <p>Get exclusive deals, early access to sales, and weekly style tips.</p>
+      </div>
+      <div class="newsletter-form-wrap">
+        <div class="newsletter-form">
+          <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="Enter your email address">
+          <button class="newsletter-btn" onclick="subscribeNewsletter()">
+            <span>Subscribe</span>
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+        <p class="newsletter-fine">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+
+    <!-- Footer Grid -->
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">NEX<span>US</span></div>
+        <p class="footer-brand-desc">Your one-stop destination for premium products. We bring the best of electronics, fashion, and lifestyle right to your doorstep — always at the best prices.</p>
+        <div class="footer-socials">
+          <a class="social-btn" href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a class="social-btn" href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-btn" href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a class="social-btn" href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          <a class="social-btn" href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press & Media</a></li>
+          <li><a href="#">Our Blog</a></li>
+          <li><a href="#">Partners</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help & Support</h4>
+        <ul class="footer-links">
+          <li><a href="#">Track My Order</a></li>
+          <li><a href="#">Returns & Refunds</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Customer Support</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Size Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul class="footer-links contact-links">
+          <li><a href="mailto:hello@nexus.com"><i class="fas fa-envelope"></i> hello@nexus.com</a></li>
+          <li><a href="tel:+919999999999"><i class="fas fa-phone"></i> +91 99999 99999</a></li>
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Nariman Point, Mumbai</a></li>
+          <li><a href="#"><i class="fas fa-clock"></i> Mon–Sat, 9 AM – 9 PM</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 NEXUS Store. All rights reserved. Made with ♥ in India.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+      <div class="footer-payments">
+        <span class="pay-badge">VISA</span>
+        <span class="pay-badge">MC</span>
+        <span class="pay-badge">UPI</span>
+        <span class="pay-badge">PayTM</span>
+        <span class="pay-badge">COD</span>
+        <span class="pay-badge">GPay</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== CART SIDEBAR ===================== -->
+<div class="overlay-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
+<aside class="cart-sidebar" id="cartSidebar">
+  <div class="cart-sidebar-header">
+    <div class="cart-header-left">
+      <h2>Shopping Bag</h2>
+      <span class="cart-header-count" id="cartHeaderCount">0 items</span>
+    </div>
+    <button class="sidebar-close-btn" onclick="closeCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items-list" id="cartItemsList"></div>
+  <div class="cart-sidebar-footer" id="cartSidebarFooter">
+    <div class="cart-totals-block">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">₹0</span>
+      </div>
+      <div class="cart-total-row">
+        <span>Shipping</span>
+        <span class="green-text">FREE</span>
+      </div>
+      <div class="cart-total-row grand-total">
+        <span>Grand Total</span>
+        <span id="cartGrandTotal">₹0</span>
+      </div>
+    </div>
+    <button class="checkout-btn" onclick="openCheckout()">
+      <i class="fas fa-lock"></i>
+      Proceed to Checkout
+    </button>
+    <button class="continue-shopping-btn" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</aside>
+
+<!-- ===================== WISHLIST SIDEBAR ===================== -->
+<div class="overlay-backdrop" id="wishlistBackdrop" onclick="closeWishlist()"></div>
+<aside class="wishlist-sidebar" id="wishlistSidebar">
+  <div class="cart-sidebar-header">
+    <div class="cart-header-left">
+      <h2>My Wishlist</h2>
+      <span class="cart-header-count" id="wishlistHeaderCount">0 items</span>
+    </div>
+    <button class="sidebar-close-btn" onclick="closeWishlist()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items-list" id="wishlistItemsList"></div>
+  <div class="cart-sidebar-footer" id="wishlistSidebarFooter" style="display:none">
+    <button class="checkout-btn" onclick="addAllWishlistToCart()">
+      <i class="fas fa-shopping-bag"></i>
+      Add All to Cart
+    </button>
+    <button class="continue-shopping-btn" onclick="closeWishlist()">Continue Shopping</button>
+  </div>
+</aside>
+
+<!-- ===================== QUICK VIEW MODAL ===================== -->
+<div class="modal-backdrop" id="quickviewBackdrop" onclick="closeQuickview()"></div>
+<div class="modal quickview-modal" id="quickviewModal">
+  <button class="modal-close-btn" onclick="closeQuickview()"><i class="fas fa-times"></i></button>
+  <div class="quickview-body">
+    <div class="quickview-image-side">
+      <img id="qvImage" src="" alt="" loading="lazy">
+      <div class="qv-badge-wrap" id="qvBadgeWrap"></div>
+    </div>
+    <div class="quickview-info-side">
+      <div class="qv-cat" id="qvCat"></div>
+      <h2 class="qv-name" id="qvName"></h2>
+      <div class="qv-stars" id="qvStars"></div>
+      <div class="qv-price" id="qvPrice"></div>
+      <p class="qv-desc" id="qvDesc"></p>
+      <div class="qv-qty-row">
+        <span class="qv-qty-label">Quantity</span>
+        <div class="qv-qty-control">
+          <button onclick="qvChangeQty(-1)">−</button>
+          <span id="qvQty">1</span>
+          <button onclick="qvChangeQty(1)">+</button>
+        </div>
+      </div>
+      <div class="qv-actions">
+        <button class="qv-add-cart" id="qvAddCartBtn">
+          <i class="fas fa-shopping-bag"></i> Add to Cart
+        </button>
+        <button class="qv-add-wishlist" id="qvAddWishlistBtn">
+          <i class="fas fa-heart"></i>
+        </button>
+      </div>
+      <div class="qv-features">
+        <span><i class="fas fa-truck"></i> Free Delivery</span>
+        <span><i class="fas fa-undo"></i> 30-Day Return</span>
+        <span><i class="fas fa-shield-alt"></i> Secure</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CHECKOUT MODAL ===================== -->
+<div class="modal-backdrop" id="checkoutBackdrop" onclick="closeCheckout()"></div>
+<div class="modal checkout-modal" id="checkoutModal">
+  <div class="modal-header">
+    <h2>Secure Checkout</h2>
+    <button class="modal-close-btn static" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="checkout-body">
+    <!-- Left: Form -->
+    <div class="checkout-form-col">
+      <div class="checkout-section-title"><i class="fas fa-user"></i> Delivery Info</div>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label class="form-label">Full Name *</label>
+          <input type="text" id="fname" class="form-input" placeholder="Arjun Patel">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone *</label>
+          <input type="tel" id="fphone" class="form-input" placeholder="+91 99999 99999">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email *</label>
+        <input type="email" id="femail" class="form-input" placeholder="you@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Street Address *</label>
+        <input type="text" id="faddress" class="form-input" placeholder="123, Main Street, Apt 4B">
+      </div>
+      <div class="form-row-3">
+        <div class="form-group">
+          <label class="form-label">City</label>
+          <input type="text" id="fcity" class="form-input" placeholder="Mumbai">
+        </div>
+        <div class="form-group">
+          <label class="form-label">State</label>
+          <input type="text" id="fstate" class="form-input" placeholder="Maharashtra">
+        </div>
+        <div class="form-group">
+          <label class="form-label">ZIP</label>
+          <input type="text" id="fzip" class="form-input" placeholder="400001">
+        </div>
+      </div>
+
+      <div class="checkout-section-title"><i class="fas fa-credit-card"></i> Payment Method</div>
+      <div class="payment-options" id="paymentOptions">
+        <label class="payment-option selected" data-val="cod">
+          <input type="radio" name="payment" value="cod" checked>
+          <span class="payment-option-icon">💵</span>
+          <div class="payment-option-text">
+            <strong>Cash on Delivery</strong>
+            <span>Pay when your order arrives</span>
+          </div>
+          <span class="payment-check"><i class="fas fa-check"></i></span>
+        </label>
+        <label class="payment-option" data-val="upi">
+          <input type="radio" name="payment" value="upi">
+          <span class="payment-option-icon">📱</span>
+          <div class="payment-option-text">
+            <strong>UPI / QR Code</strong>
+            <span>GPay, PhonePe, Paytm</span>
+          </div>
+          <span class="payment-check"><i class="fas fa-check"></i></span>
+        </label>
+        <label class="payment-option coming-soon" data-val="card">
+          <input type="radio" name="payment" value="card" disabled>
+          <span class="payment-option-icon">💳</span>
+          <div class="payment-option-text">
+            <strong>Debit / Credit Card</strong>
+            <span>Coming Soon</span>
+          </div>
+          <span class="coming-soon-tag">Soon</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Right: Order Summary -->
+    <div class="checkout-summary-col">
+      <div class="checkout-section-title"><i class="fas fa-receipt"></i> Order Summary</div>
+      <div class="order-items-list" id="orderItemsList"></div>
+      <div class="order-totals">
+        <div class="order-total-row"><span>Subtotal</span><span id="checkoutSubtotal">₹0</span></div>
+        <div class="order-total-row"><span>Shipping</span><span class="green-text">FREE</span></div>
+        <div class="order-total-row grand"><span>Total</span><span id="checkoutTotal">₹0</span></div>
+      </div>
+      <div class="checkout-guarantees">
+        <span><i class="fas fa-lock"></i> SSL Secured</span>
+        <span><i class="fas fa-undo"></i> 30-Day Returns</span>
+        <span><i class="fas fa-medal"></i> Authentic</span>
+      </div>
+      <button class="place-order-btn" onclick="placeOrder()">
+        <span>Place Order</span>
+        <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SUCCESS MODAL ===================== -->
+<div class="modal-backdrop" id="successBackdrop"></div>
+<div class="modal success-modal" id="successModal">
+  <div class="success-content">
+    <div class="success-anim" id="successAnim">
+      <div class="success-circle"></div>
+      <i class="fas fa-check success-check-icon"></i>
+    </div>
+    <h2 class="success-title">Order Placed! 🎉</h2>
+    <p class="success-sub">Your order has been confirmed. You'll receive a confirmation on your email & phone shortly. Estimated delivery: <strong>2–4 business days</strong>.</p>
+    <div class="success-order-id" id="successOrderId">Order #NXS000000</div>
+    <button class="btn-hero-primary" style="width:100%;justify-content:center;margin-top:8px" onclick="closeSuccess()">
+      Continue Shopping <i class="fas fa-arrow-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- Back To Top -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
